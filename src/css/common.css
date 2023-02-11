@@ -16,3 +16,24 @@ img {
   display: block;
   max-width: 100%;
 }
+
+[data-start],
+[data-stop]{
+  display: inline-flex;
+    margin-left: 4px;
+    margin-right: 4px;
+    text-transform: uppercase;
+    border: 0;
+    background-color: #3f51b5;
+    color: #ffffff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 3px;
+}
+ 
+.is-active {
+  background-color: #7c6f6f;
+  color: #ffffff;
+  opacity: 0.5;
+}
