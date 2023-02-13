@@ -93,7 +93,8 @@ function updateClockface({ hours, mins, secs }) {
   refs.clockface.textContent = `${hours}:${mins}:${secs}`;
 };
 
-console.log("timer ", timer);
+
+
 
 
 
