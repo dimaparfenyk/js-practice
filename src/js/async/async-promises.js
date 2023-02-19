@@ -89,11 +89,72 @@ const timer = new Timer({
 refs.startBtn.addEventListener('click', timer.start.bind(timer));
 refs.stopBtn.addEventListener('click', timer.stop.bind(timer));
 
+
+
+
 function updateClockface({ hours, mins, secs }) {
   refs.clockface.textContent = `${hours}:${mins}:${secs}`;
 };
 
+// let person = {
+//   updateName: function (newName) {
+//   return  this.name = newName;
+//   },
+//   greet: function () {
+//     return alert(`Hi, ${this.name} ${this.surname}!`);
+//   },
+//   log: function () {
+//   return  console.log(this)
+//   },
+// };
 
+// let detective = Object.create(person)
+// detective.name = "Fred";
+// detective.surname = "Stone";
+// detective.greet();
+
+
+// let sailor = Object.create(person);
+// sailor.name = "Tom";
+// sailor.surname = "Gustav";
+// sailor.skills=['swim','run','drink']
+// console.dir(detective.__proto__===sailor.__proto__);
+// sailor.updateName('Billy')
+// sailor.log()
+
+// let seawolf = Object.create(sailor);
+// seawolf.experience = 85;
+// seawolf.gainXP = function () {
+//   this.experience += 1
+// }
+
+// seawolf.gainXP()
+// console.dir(seawolf)
+
+const Sailor = function ({name,age,xp}={}) {
+  this.name = name;
+  this.age = age;
+  this.xp = xp;
+};
+
+Sailor.prototype.gainXp = function (value) {
+  return this.xp += value;
+};
+Sailor.prototype.getName = function () {
+  return this.name;
+};
+
+const shipboy = new Sailor({name:'Tommy', age:19, xp:12});
+const midshipman = new Sailor({name:'Billy', age:23, xp:27});
+shipboy.gainXp(5)
+midshipman.gainXp(10)
+// console.log(Sailor.prototype===shipboy.__proto__)
+// console.log(shipboy.gainXp === midshipman.gainXp)
+// console.log(shipboy.getName===midshipman.getName)
+console.log('shipboy',shipboy);
+console.log('midshipman',midshipman);
+// console.log(typeof(Sailor))
+// console.log(typeof (new Sailor()))
 
 
 
