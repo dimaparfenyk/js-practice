@@ -7,7 +7,7 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  background-color: #efefea;
   color: #212121;
   line-height: 1.5;
 }
@@ -15,6 +15,51 @@ body {
 img {
   display: block;
   max-width: 100%;
+}
+ul{
+  list-style: none;
+  margin: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+.base-nav-link{
+font-style: 20px;
+color: #fafafa;
+}
+
+.base-nav{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.base-nav-item{
+padding: 20px 10px;
+min-width: 100px;
+border: 2px solid #69b5ef;
+border-radius: 8px;
+background-color: rgb(59, 143, 146);
+text-transform: uppercase;
+text-align: center;
+cursor: pointer;
+transition-duration: 250ms;
+}
+.base-nav-item:hover,
+.base-nav-item:active{
+  scale: 1.01;
+  background-color: rgb(41, 116, 119);
+}
+.base-nav-item:not(:last-child){
+margin-right: 20px;
+}
+
+#search-box {
+  font: inherit;
+  padding: 8px;
+  max-width: 320px;
+  margin-bottom: 16px;
 }
 
 [data-start],
