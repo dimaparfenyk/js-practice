@@ -1,7 +1,7 @@
 import '../../css/common.css';
 import debounce from 'lodash.debounce';
 import { Notify } from 'notiflix';
-import fetchCountries from '../fetchCountries';
+import ApiCountries from '../fetchCountries';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -13,31 +13,26 @@ const refs={
 
 refs.searchBox.addEventListener('input', debounce(fetchCountry, DEBOUNCE_DELAY));
 
+const country=new ApiCountries();
+
 function fetchCountry(e){
 
-    const searchQuery=e.target.value.trim();
+    country.name=e.target.value.trim();
 
-    if(searchQuery===''){
-        clearUI();
-        return;
+    if(country.name===''){
+        return clearUI();
     };
 
-    fetchCountries(searchQuery).then(
+    country.fetchCountries().then(
         countries=>{ 
-            if(countries.length===0||countries.length>10){
+            if(countries===0||countries.length>10){
             Notify.info("Too many matches found. Please enter a more specific name.");
-            // refs.countriesList.innerHTML='';
             clearUI();
             return;
         };
-        // if(countries.length===0&&countries.length>10){
-        //     ;
-        //     return;
-        // };
-
-            renderMarkUp(countries);
+     renderMarkUp(countries);
     }).catch(error=>{
-        Notify.failure(`Oops, there is no country with ${searchQuery} name`);
+        Notify.failure(`Oops, there is no country with ${country.name} name`);
         clearUI();
         console.log('Error ', error);
     });     
@@ -47,8 +42,7 @@ function renderMarkUp(countries){
     if(countries.length>1){
         refs.countriesList.innerHTML=renderCountriesList(countries);
         refs.countryInfo.innerHTML='';  
-    }
-    else if(countries.length===1){
+    }else if(countries.length===1){
         refs.countryInfo.innerHTML=renderCountryCard(countries);
         refs.countriesList.innerHTML='';
     }
